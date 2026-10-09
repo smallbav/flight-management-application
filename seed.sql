@@ -91,9 +91,11 @@ INSERT INTO Flight (flight_id, flight_number, origin_id, destination_id, departu
 --   * Flights 1-7: full crew (Captain + First Officer)  -> 14 rows
 --   * Flight 8:    Captain only (partly crewed)         ->  1 row
 --   * Flights 9-12: no crew at all (incl. the cancelled flight)
--- Every role matches the pilot's rank, and no pilot is on two flights
--- whose times overlap. Seed data bypasses the Python checks, so these
--- rules were checked by hand (and by queries) rather than by the app.
+-- No First Officer is assigned as Captain. The app enforces this rule
+-- in Python, but seed data bypasses the app, so it was checked by query.
+-- No pilot is on two flights whose times overlap. The app does not
+-- check for overlaps (a known limitation), so this was also checked
+-- by query.
 -- Columns: flight_id, pilot_id, role
 -- ---------------------------------------------------------------------
 INSERT INTO FlightAssignment (flight_id, pilot_id, role) VALUES
