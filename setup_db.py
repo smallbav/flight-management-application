@@ -29,8 +29,8 @@ def build_database():
         # Quick confirmation that every table was populated
         for table in ("Airport", "Pilot", "Flight", "FlightAssignment"):
             count = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
-            print(f"{table:<17} {count:>3} rows")
-        print(f"Database created at {DB_PATH}")
+            print(table, "-", count, "rows")
+        print("Database created at", DB_PATH)
     finally:
         conn.close()
 
